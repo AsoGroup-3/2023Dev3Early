@@ -6,8 +6,16 @@
   }
 
 .icon{
-    text-align: left;
-    height: 100px;
-    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.icon_img{
+    height: 300px;
+    width: 600px;
+}
+
+.explanation{
+  text-align: center;
 }
   
