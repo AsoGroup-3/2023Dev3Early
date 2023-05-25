@@ -1,0 +1,13 @@
+.background {
+    background-image: url('../img/frog.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+.icon{
+    text-align: left;
+    height: 100px;
+    width: 200px;
+}
+  
