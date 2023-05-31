@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.icon_img{
+.home_icon_img{
     height: 300px;
     width: 600px;
 }
@@ -32,4 +32,19 @@
 
 .thread-btn{
   margin-top: 72px;
+}
+
+.create_area{
+  margin:0 auto;
+  height: 880px;
+  width: 800px;
+}
+
+.input_area{
+  width: 600px;
+}
+
+.input_area_lg{
+  width: 600px;
+  height: 400px;
 }
