@@ -1,0 +1,44 @@
+body {
+    margin: 0 0 auto;
+}
+
+
+
+.site-header {
+    background-color: rgb(221, 221, 221);
+    display: flex;
+    align-items: center;
+}
+
+.search-button {
+    height: 35px;
+    width: 35px;
+    margin-right: 100px;
+}
+
+.search-button>img {
+    height: 25px;
+    width: auto;
+}
+
+input[type=text] {
+    width: 200px;
+    height: 30px;
+}
+
+.brand-icon {
+    height: 100px;
+    width: auto;
+}
+
+.center-icon {
+    height: 100px;
+    width: auto;
+    margin: auto;
+    text-align: center;
+}
+
+.center-icon>img {
+    margin-left: 120px;
+    height: 100%;
+}
