@@ -1,5 +1,5 @@
 .background {
-    background-image: url('../img/frog.png');
+    background-image: url('../img/kaeru_Torii.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -48,4 +48,33 @@
 .input_area_lg{
   width: 600px;
   height: 400px;
+}
+
+.comment_eria{
+  background-color: rgb(229, 229, 229);
+  width: 600px;
+  margin-left: 24px;
+  padding: 5px;
+  margin-top: 16px;
+}
+
+.comment_head{
+  width: 800px;
+  margin-left: 175px;
+}
+
+.comment_head ul{
+  display: flex;
+  margin-top: 20px;
+}
+
+.comment_head li{
+  list-style: none;
+  margin-right: 300px;
+}
+
+.user_name{
+  color: rgb(123, 234, 123);
+  margin-right: 20px;
+  font-size: 25px;
 }
