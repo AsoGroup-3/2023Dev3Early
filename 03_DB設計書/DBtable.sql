@@ -6,7 +6,7 @@ CREATE TABLE threads(
     );
 
 CREATE TABLE users(
-    user_id     INT         NOT NULL,
+    user_id     VARCHAR(64) NOT NULL,
     user_name   VARCHAR(64) NULL,
     create_date DATETIME    NOT NULL,
     PRIMARY KEY (user_id)
@@ -16,7 +16,7 @@ CREATE TABLE thread_comments(
     thread_comment_id INT           NOT NULL,
     comments          VARCHAR(1024) NOT NULL,
     create_at         DATETIME      NOT NULL,
-    user_id           INT           NOt NULL,
+    user_id           VARCHAR(64)   NOt NULL,
     thread_id         INT           NOT NULL,
     PRIMARY KEY (thread_comment_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
@@ -24,10 +24,10 @@ CREATE TABLE thread_comments(
 );
 
 CREATE TABLE rings (
-    ring_id         INT NOT NULL,
-    create_user     INT NOT NULL,
-    invitation_user INT NOT NULL,
-    thread_id       INT NOT NULL,
+    ring_id         INT         NOT NULL,
+    create_user     VARCHAR(64) NOT NULL,
+    invitation_user VARCHAR(64) NOT NULL,
+    thread_id       INT         NOT NULL,
     PRIMARY KEY (ring_id) ,
     FOREIGN KEY (create_user) REFERENCES users(user_id),
     FOREIGN KEY (invitation_user) REFERENCES users(user_id),
@@ -38,7 +38,7 @@ CREATE TABLE ring_comments(
     ring_comment_id INT          NOT NULL,
     ring_comment    VARCHAR(512) NOT NULL,
     create_date     DATETIME     NOT NULL,
-    user_id         INT          NOT NULL,
+    user_id         VARCHAR(64)  NOT NULL,
     ring_id         INT          NOT NULL,
     PRIMARY KEY (ring_comment_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
