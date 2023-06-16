@@ -11,8 +11,21 @@ class thread_main{
         return $pdo;
     }
 
+    function get_user_name($user_id){
+        $pdo = $this->dbconnect();
+        // 修正箇所
+        $sql = 'SELECT user_name FROM users WHERE user_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
+        $ps->execute();
+        $user_name = $ps->fetch();
+
+        return $user_name;
+    }
+
     function thread_comment_display(){
         $pdo = $this->dbconnect();
+        // 修正箇所
         $sql = 'SELECT * FROM thread_test';
         $ps = $pdo->prepare($sql);
         $ps->execute();
@@ -23,11 +36,15 @@ class thread_main{
 
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$dataに追加している
         foreach ($thread_comment as $row) {
+
+            $user_name = self::get_user_name($row['user_id']);
+
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],
                 'comment' => $row['comment'],
                 'create_at' => $row['create_at'],
                 'user_id' => $row['user_id'],
+                'user_name' => $user_name,
                 'thread_id' => $row['thread_id']
             ));
         }
@@ -36,6 +53,7 @@ class thread_main{
 
         print $json_array;
     }
+
 }
 
 ?>
