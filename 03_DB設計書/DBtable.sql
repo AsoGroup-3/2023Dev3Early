@@ -40,6 +40,7 @@ CREATE TABLE ring_comments(
     create_date     DATETIME     NOT NULL,
     user_id         INT          NOT NULL,
     ring_id         INT          NOT NULL,
+    PRIMARY KEY (ring_comment_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (ring_id) REFERENCES rings(ring_id)
 );
