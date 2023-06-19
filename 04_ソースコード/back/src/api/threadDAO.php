@@ -6,11 +6,13 @@ header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json; charset=UTF-8');
 
 class thread_main{
+    //DB接続
     function dbconnect(){
         $pdo = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'webuser','abccsd2');
         return $pdo;
     }
 
+    //ユーザーIDからユーザー名取得
     function get_user_name($user_id){
         $pdo = $this->dbconnect();
         // 修正箇所
@@ -23,11 +25,12 @@ class thread_main{
         return $user_name;
     }
 
-    function thread_comment_display(){
+    //コメント表示機能
+    function thread_comment_display($thread_id){
         $pdo = $this->dbconnect();
-        // 修正箇所
-        $sql = 'SELECT * FROM thread_test';
+        $sql = 'SELECT * FROM thread_comments WHERE thread_id = ?';
         $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
         $ps->execute();
         $thread_comment = $ps->fetchAll();
 
