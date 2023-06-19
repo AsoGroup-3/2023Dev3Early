@@ -6,6 +6,6 @@
         $dbm->thread_comment_display(2);
         
     }catch(Exception $e){
-
+        echo "エラー";
     }
 ?>

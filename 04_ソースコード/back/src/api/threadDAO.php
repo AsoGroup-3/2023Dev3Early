@@ -8,7 +8,7 @@ header('Content-Type: application/json; charset=UTF-8');
 class thread_main{
     //DB接続
     function dbconnect(){
-        $pdo = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'webuser','abccsd2');
+        $pdo = new PDO('mysql:host=localhost;dbname=rordb;charset=utf8', 'webuser','abccsd2');
         return $pdo;
     }
 
@@ -22,7 +22,7 @@ class thread_main{
         $ps->execute();
         $user_name = $ps->fetch();
 
-        return $user_name;
+        return $user_name[0];
     }
 
     //コメント表示機能
@@ -40,7 +40,7 @@ class thread_main{
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$dataに追加している
         foreach ($thread_comment as $row) {
 
-            $user_name = self::get_user_name($row['user_id']);
+            $user_name = $this->get_user_name($row['user_id']);
 
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],
