@@ -6,11 +6,13 @@ header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json; charset=UTF-8');
 
 class thread_main{
+    //DB接続
     function dbconnect(){
-        $pdo = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'webuser','abccsd2');
+        $pdo = new PDO('mysql:host=localhost;dbname=rordb;charset=utf8', 'webuser','abccsd2');
         return $pdo;
     }
 
+    //ユーザーIDからユーザー名取得
     function get_user_name($user_id){
         $pdo = $this->dbconnect();
         // 修正箇所
@@ -20,14 +22,15 @@ class thread_main{
         $ps->execute();
         $user_name = $ps->fetch();
 
-        return $user_name;
+        return $user_name[0];
     }
 
-    function thread_comment_display(){
+    //コメント表示機能
+    function thread_comment_display($thread_id){
         $pdo = $this->dbconnect();
-        // 修正箇所
-        $sql = 'SELECT * FROM thread_test';
+        $sql = 'SELECT * FROM thread_comments WHERE thread_id = ?';
         $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
         $ps->execute();
         $thread_comment = $ps->fetchAll();
 
@@ -37,7 +40,7 @@ class thread_main{
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$dataに追加している
         foreach ($thread_comment as $row) {
 
-            $user_name = self::get_user_name($row['user_id']);
+            $user_name = $this->get_user_name($row['user_id']);
 
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],

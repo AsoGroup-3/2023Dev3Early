@@ -3,9 +3,9 @@
     $dbm = new thread_main();
 
     try{
-        $dbm->thread_comment_display();
+        $dbm->thread_comment_display(2);
         
     }catch(Exception $e){
-
+        echo "エラー";
     }
 ?>
