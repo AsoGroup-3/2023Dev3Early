@@ -6,10 +6,12 @@ header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json; charset=UTF-8');
 require 'connectDAO.php';
 
-class thread_main{
+class thread_main
+{
 
     //ユーザーIDからユーザー名取得
-    function get_user_name($user_id){
+    function get_user_name($user_id)
+    {
         $pdo = dbconnect();
         // 修正箇所
         $sql = 'SELECT user_name FROM users WHERE user_id = ?';
@@ -22,7 +24,8 @@ class thread_main{
     }
 
     //コメント表示機能
-    function thread_comment_display($thread_id){
+    function thread_comment_display($thread_id)
+    {
         $pdo = dbconnect();
         $sql = 'SELECT * FROM thread_comments WHERE thread_id = ?';
         $ps = $pdo->prepare($sql);
@@ -40,7 +43,7 @@ class thread_main{
 
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],
-                'comment' => $row['comment'],
+                'comment' => $row['comments'],
                 'create_at' => $row['create_at'],
                 'user_id' => $row['user_id'],
                 'user_name' => $user_name,
@@ -52,5 +55,4 @@ class thread_main{
 
         print $json_array;
     }
-
 }
