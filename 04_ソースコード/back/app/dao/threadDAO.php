@@ -53,4 +53,9 @@ class thread_main{
         print $json_array;
     }
 
+    //スレッド取得昨日
+    function thread_get($thread_id){
+        
+    }
+
 }
