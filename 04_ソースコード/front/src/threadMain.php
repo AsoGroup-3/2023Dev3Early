@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
+
+<?php
+require "../components/header.php";
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +13,10 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    
+
     <title>Document</title>
 </head>
+
 <body class="background">
     <!-- タイトルエリア -->
     <h2>【ウナギ】ウナギのかば焼きってまずいよなwww【ヤマメ】</h2>
@@ -22,21 +28,21 @@
             <li>バイト数</li>
         </ul>
     </div>
-<!-- コメント表示エリア -->
-<div id="app">
-  <div v-for="(item, i) in comments" class="comment_eria">
-      <!-- ユーザー情報・日付表示エリア -->
-      <div style="margin-bottom: 10px;">
-        <div class="user_name">{{item.user_name}}</div>
-        <span style="padding-right: 10px;">{{item.user_id}}</span>
-        <span>{{item.create_at}}</span>
-      </div>
-  
-      <!-- コメント本文 -->
-      <p>{{item.comment}}</p>
-  </div>
-</div>
-    
+    <!-- コメント表示エリア -->
+    <div id="app">
+        <div v-for="(item, i) in comments" class="comment_eria">
+            <!-- ユーザー情報・日付表示エリア -->
+            <div style="margin-bottom: 10px;">
+                <div class="user_name">{{item.user_name}}</div>
+                <span style="padding-right: 10px;">{{item.user_id}}</span>
+                <span>{{item.create_at}}</span>
+            </div>
+
+            <!-- コメント本文 -->
+            <p>{{item.comment}}</p>
+        </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -49,4 +55,5 @@
     <!-- JSの読み込み -->
     <script src="./script/threadMain.js"></script>
 </body>
+
 </html>
