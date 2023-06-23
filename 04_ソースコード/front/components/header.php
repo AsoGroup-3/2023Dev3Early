@@ -6,11 +6,13 @@
 
     <header class='site-header'>
 
-        <img class='brand-icon' src='../assets/img/application_Icon.png'>
+        <a href="../src/home.php">
+            <img class='brand-icon' src='../assets/img/application_Icon.png'>
+        </a>
 
-        <div class='center-icon'>
+        <a href="../src/home.php" class="center-icon">
             <img src='../assets/img/mugen_unagi.PNG'>
-        </div>
+        </a>
 
         <input type='text' class='search-box'>
         <button class='search-button'>
