@@ -33,7 +33,10 @@
 }
 
 .thread-btn{
-  margin-top: 72px;
+  position:fixed;
+  left:5px;
+  bottom:5px;
+  /* margin-top: 72px; */
 }
 
 .create_area{

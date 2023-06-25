@@ -1,0 +1,1 @@
+<button type="button" class="btn btn-default thread-btn" onclick="location.href='./threadCreate.php'">スレッド新規作成</button>
