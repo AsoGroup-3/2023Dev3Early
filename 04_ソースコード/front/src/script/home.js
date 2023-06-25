@@ -8,7 +8,7 @@ const vm = new Vue({
     },
     methods: {
       fetchThreads() {
-        const url = "http://localhost/web/2023Dev3Early/04_ソースコード/back/src/threadUrl.php";
+        const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/threadUrl.php";
         const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
         axios
           .get(`${url}?timestamp=${timestamp}`)
