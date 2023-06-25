@@ -46,60 +46,14 @@ require "../components/header.php";
     </h1>
 
     <!-- 仮コード　後でVew.jsのループを使ったコードに書き換える -->
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-        </div>
-
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-        </div>
-
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-        </div>
-
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
-            </div>
-
-            <div class="col-md-6">
-                <a href="">お前らと柳川川下り行きたい1(8)</a>
-                <p>2023年05月26日 10:19</p>
-                <p>8.0日</p>
+    <div id="app">
+        <div class="container">
+            <div class="row align-items-center">
+                <div v-for="(item, i) in threads" class="col-md-6">
+                    <a v-bind:href="item.thread_url">{{item.thread_name}}</a>
+                    <p>2023年05月26日 10:19</p>
+                    <p>8.0日</p>
+                </div>
             </div>
         </div>
     </div>
@@ -112,6 +66,12 @@ require "../components/header.php";
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- vue.jsのCDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- JSONを扱うためのCDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- JSの読み込み -->
+    <script src="./script/home.js"></script>
 </body>
 
 </html>

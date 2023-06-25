@@ -36,7 +36,7 @@ class thread_main
         //配列の宣言（無いとエラーが発生した）
         $com_data = array();
 
-        //データベースから持ってきたデータをforeachを利用してデータの数だけ$dataに追加している
+        //データベースから持ってきたデータをforeachを利用してデータの数だけ$com_dataに追加している
         foreach ($thread_comment as $row) {
 
             $user_name = $this->get_user_name($row['user_id']);
@@ -54,5 +54,42 @@ class thread_main
         $json_array = json_encode($com_data);
 
         print $json_array;
+    }
+
+    //スレッド取得昨日
+    function thread_get()
+    {
+        $pdo = dbconnect();
+        $sql = 'SELECT * FROM threads LIMIT 8';
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $thread = $ps->fetchAll();
+
+        $thread_data = array();
+
+        //データベースから持ってきたデータをforeachを利用してデータの数だけ$thr_dataに追加している
+        foreach ($thread as $row) {
+
+            array_push($thread_data, array(
+                'thread_id' => $row['thread_id'],
+                'thread_name' => $row['thread_name'],
+                'thread_bytes' => $row['thread_bytes'],
+                'thread_url' => 'http://localhost/web/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.html' . '?thread_id=' . $row['thread_id'],
+            ));
+        }
+        //arrayの中身をJSON形式に変換している
+        $json_array = json_encode($thread_data);
+
+        print $json_array;
+    }
+
+    function get_thread_name($thread_id)
+    {
+        $pdo = dbconnect();
+        $sql = 'SELECT thread_name FROM thread_comments WHERE thread_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
+        $ps->execute();
+        $thread_name = $ps->fetch();
     }
 }
