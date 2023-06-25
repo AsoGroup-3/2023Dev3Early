@@ -74,7 +74,7 @@ class thread_main
                 'thread_id' => $row['thread_id'],
                 'thread_name' => $row['thread_name'],
                 'thread_bytes' => $row['thread_bytes'],
-                'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.html' . '?thread_id=' . $row['thread_id'],
+                'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
             ));
         }
         //arrayの中身をJSON形式に変換している
