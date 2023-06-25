@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <?php
-require "../components/header.php";
+require_once "../components/header.php";
 ?>
 
 <head>
@@ -18,18 +18,19 @@ require "../components/header.php";
 </head>
 
 <body class="background">
-    <!-- タイトルエリア -->
-    <h2>【ウナギ】ウナギのかば焼きってまずいよなwww【ヤマメ】aaaaaaa</h2>
-
-    <!-- レス数・バイト数表示エリア -->
-    <div class="comment_head">
-        <ul>
-            <li>レス数</li>
-            <li>バイト数</li>
-        </ul>
-    </div>
-    <!-- コメント表示エリア -->
     <div id="app">
+
+        <!-- タイトルエリア -->
+        <h2>{{thread_name}}</h2>
+
+        <!-- レス数・バイト数表示エリア -->
+        <div class="comment_head">
+            <ul>
+                <li>レス数</li>
+                <li>バイト数</li>
+            </ul>
+        </div>
+        <!-- コメント表示エリア -->
         <div v-for="(item, i) in comments" class="comment_eria">
             <!-- ユーザー情報・日付表示エリア -->
             <div style="margin-bottom: 10px;">

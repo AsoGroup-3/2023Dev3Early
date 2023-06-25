@@ -86,12 +86,16 @@ class thread_main
     function get_thread_name($thread_id)
     {
         $pdo = dbconnect();
-        $sql = 'SELECT thread_name FROM thread_comments WHERE thread_id = ?';
+        $sql = 'SELECT thread_name FROM threads WHERE thread_id = ?';
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
         $ps->execute();
         $thread_name = $ps->fetch();
 
+<<<<<<< HEAD
+        print json_encode($thread_name[0]);
+=======
         
+>>>>>>> f0d3496a07735a4f66ec46ad498b51706be99925
     }
 }
