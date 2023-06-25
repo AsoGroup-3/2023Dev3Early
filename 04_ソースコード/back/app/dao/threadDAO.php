@@ -91,5 +91,7 @@ class thread_main
         $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
         $ps->execute();
         $thread_name = $ps->fetch();
+
+        
     }
 }

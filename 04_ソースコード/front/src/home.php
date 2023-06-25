@@ -2,7 +2,8 @@
 <html lang="ja">
 
 <?php
-require "../components/header.php";
+require_once "../components/header.php";
+require_once "../components/thread_create_buton.php";
 ?>
 
 <head>
@@ -45,7 +46,7 @@ require "../components/header.php";
         <p class="text-center">新着スレ一覧</p>
     </h1>
 
-    <!-- 仮コード　後でVew.jsのループを使ったコードに書き換える -->
+
     <div id="app">
         <div class="container">
             <div class="row align-items-center">
@@ -57,9 +58,8 @@ require "../components/header.php";
             </div>
         </div>
     </div>
-    <!-- 仮コードここまで -->
 
-    <button type="button" class="btn btn-default thread-btn" onclick="location.href='./threadCreate.php'">スレッド新規作成画面へ</button>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
