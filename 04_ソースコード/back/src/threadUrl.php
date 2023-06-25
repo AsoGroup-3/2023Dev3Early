@@ -3,7 +3,7 @@
     $dbm = new thread_main();
 
     try{
-        $dbm->thread_comment_display($_GET['thread_id']);
+        $dbm->thread_get();
         
     }catch(Exception $e){
         echo "エラー";
