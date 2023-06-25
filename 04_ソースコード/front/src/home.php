@@ -105,7 +105,7 @@ require "../components/header.php";
     </div>
     <!-- 仮コードここまで -->
 
-    <button type="button" class="btn btn-default thread-btn" onclick="location.href='./threadCreate.css'">スレッド新規作成画面へ</button>
+    <button type="button" class="btn btn-default thread-btn" onclick="location.href='./threadCreate.php'">スレッド新規作成画面へ</button>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
