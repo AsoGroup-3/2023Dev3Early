@@ -18,21 +18,15 @@ require "../components/header.php";
 </head>
 
 <body class="background">
-
     <form class="form-inline create_area">
         <div>
-            <p class="form-inline">タイトル：　　<input type="text" class="input_area"></p>
+            <p class="form-inline">タイトル：　<input type="text" class="input_area"></p>
 
-            <p class="form-inline">対戦相手ID：　<input type="text" class="input_area"></p>
+            <p class="form-inline">名前：　　　<input type="text" class="input_area"></p>
 
-            <p class="form-inline">内容：　　　　<input type="text" class="input_area_lg"></p>
-            <p class="form-inline">内容：　　　　<select>
-                    <option>いち</option>
-                    <option>に</option>
-                </select></p>
+            <p class="form-inline">内容：　　　<input type="text" class="input_area_lg"></p>
 
-
-            <div style="text-align: right;"><button type="button" class="btn btn-default border border-2 border-dark">作成</button></div>
+            <div style="text-align: right;"><button type="button" class="btn btn-default">作成</button></div>
         </div>
     </form>
 

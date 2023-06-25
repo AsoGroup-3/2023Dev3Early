@@ -91,3 +91,77 @@
   font-size: 25px;
 
 }
+
+
+
+
+
+.resuba_eria_left{
+  background-color: rgb(229, 229, 229);
+  width: 600px;
+  margin-left: 150px;
+  padding: 5px;
+  margin-top: 16px;
+}
+
+.resuba_head_left{
+  width: 800px;
+  margin-left: 175px;
+}
+
+.resuba_head_left ul{
+  display: flex;
+  margin-top: 20px;
+}
+
+.resuba_head_left li{
+  list-style: none;
+  margin-right: 300px;
+}
+
+
+.resuba_eria_right{
+  background-color: rgb(229, 229, 229);
+  width: 600px;
+  margin-left: 1150px;
+  padding: 5px;
+  margin-top: 16px;
+}
+
+.resuba_head_right{
+  width: 800px;
+  margin-right: 175px;
+}
+
+.resuba_head_right ul{
+  display: flex;
+  margin-top: 20px;
+}
+
+.resuba_head_right li{
+  list-style: none;
+  margin-right: 300px;
+}
+
+.ko {
+  display: flex;
+  justify-content: center;
+}
+
+
+  .left_nawa{
+    float: left;
+  }
+
+  .right_nawa{
+
+    float: right;
+  }
+
+  #nawa_bottom {
+    position: fixed;
+    top: 99%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
