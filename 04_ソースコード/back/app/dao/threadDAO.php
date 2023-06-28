@@ -92,10 +92,40 @@ class thread_main
         $ps->execute();
         $thread_name = $ps->fetch();
 
-<<<<<<< HEAD
         print json_encode($thread_name[0]);
-=======
-        
->>>>>>> f0d3496a07735a4f66ec46ad498b51706be99925
+
     }
+
+    // IPアドレスを取得する関数
+    function getIpAddress() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            // プロキシを経由している場合
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            // ロードバランサやプロキシを経由している場合
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            // 直接接続している場合
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+
+    //IPアドレスをハッシュ化して返す関数
+    function getHashedIpAddress() {
+        $ipAddress = getIpAddress();
+        $hashedIpAddress = hash('sha256', $ipAddress);
+        return $hashedIpAddress;
+    }
+
+    // 書き込み昨日
+    // function write_in_thread($user_id,$comment_detail,$thread_id)
+    // {
+    //     $pdo = dbconnect();
+    //     $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?)';
+    //     $ps = $pdo->prepare($sql);
+    //     $ps->bindValue(1, $comment_detail, PDO::PARAM_STR);
+    //     $ps->bindValue(2, date("Y/m/d H:i:s"), PDO::PARAM_INT);
+    //     $ps->bindValue(3, $user_id, PDO::PARAM_STR);
+    // }
 }
