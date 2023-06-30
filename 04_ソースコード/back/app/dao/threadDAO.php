@@ -4,7 +4,8 @@
 
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json; charset=UTF-8');
-require 'connectDAO.php';
+require_once 'connectDAO.php';
+require_once 'versatilityDAO.php';
 
 class thread_main
 {
@@ -96,29 +97,8 @@ class thread_main
 
     }
 
-    // IPアドレスを取得する関数
-    function getIpAddress() {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            // プロキシを経由している場合
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            // ロードバランサやプロキシを経由している場合
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
-            // 直接接続している場合
-            $ip = $_SERVER['REMOTE_ADDR'];
-        }
-        return $ip;
-    }
 
-    //IPアドレスをハッシュ化して返す関数
-    function getHashedIpAddress() {
-        $ipAddress = getIpAddress();
-        $hashedIpAddress = hash('sha256', $ipAddress);
-        return $hashedIpAddress;
-    }
-
-    // 書き込み昨日
+    // 書き込み機能
     // function write_in_thread($user_id,$comment_detail,$thread_id)
     // {
     //     $pdo = dbconnect();
