@@ -8,6 +8,18 @@ require 'connectDAO.php';
 
 class thread_main
 {
+    // スレッド登録メソッド
+    function create_thread($thread_title, $thread_detail)
+    {
+        $pdo = dbconnect();
+        $sql = 'INSERT INTO threads (thread_name/*,thread_detail,thread_create_date*/)
+                VALUES (?/*,?,?*/)';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_title, PDO::PARAM_STR);
+        // $ps->bindValue(2, $thread_detail, PDO::PARAM_STR);
+        // $ps->bindValue(3, date("Y-m-d H:i:s"), PDO::PARAM_STR);
+        $ps->execute();
+    }
 
     //ユーザーIDからユーザー名取得
     function get_user_name($user_id)
