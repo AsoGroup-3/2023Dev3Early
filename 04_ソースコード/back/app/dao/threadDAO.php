@@ -80,6 +80,8 @@ class thread_main
 
         $thread_data = array();
 
+        $currentDateTime = date('Y-m-d H:i:s');
+
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$thr_dataに追加している
         foreach ($thread as $row) {
 
@@ -87,6 +89,8 @@ class thread_main
                 'thread_id' => $row['thread_id'],
                 'thread_name' => $row['thread_name'],
                 'thread_bytes' => $row['thread_bytes'],
+                'thread_create_date' => $row['thread_create_date'],
+                'created_date_time' => $this->getDateDiff($currentDateTime, $row['thread_create_date']),
                 'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
             ));
         }
@@ -107,6 +111,13 @@ class thread_main
 
         print json_encode($thread_name[0]);
 
+    }
+
+    function getDateDiff($date1, $date2) {
+        $datetime1 = new DateTime($date1);
+        $datetime2 = new DateTime($date2);
+        $interval = $datetime2->diff($datetime1);
+        return $interval->format('%a');
     }
 
 
