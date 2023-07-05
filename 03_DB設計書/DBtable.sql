@@ -1,6 +1,7 @@
 CREATE TABLE threads(
     thread_id          INT          NOT NULL AUTO_INCREMENT,
     thread_name        VARCHAR(512) NOT NULL,
+    thread_detail      VARCHAR(512) NOT NULL,
     thread_bytes       INT ,
     thread_create_date DATETIME     NOT NULL,
     PRIMARY KEY (thread_id)
