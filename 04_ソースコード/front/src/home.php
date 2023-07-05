@@ -52,8 +52,8 @@ require_once "../components/thread_create_buton.php";
             <div class="row align-items-center">
                 <div v-for="(item, i) in threads" class="col-md-6">
                     <a v-bind:href="item.thread_url">{{item.thread_name}}</a>
-                    <p>2023年05月26日 10:19</p>
-                    <p>8.0日</p>
+                    <p>{{item.thread_create_date}}</p>
+                    <p>{{item.created_date_time}}日</p>
                 </div>
             </div>
         </div>
