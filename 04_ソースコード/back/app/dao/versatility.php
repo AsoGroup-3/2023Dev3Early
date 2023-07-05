@@ -1,4 +1,25 @@
 <?php
+//ユーザーIDからユーザー名取得
+function get_user_name($user_id)
+{
+    $pdo = dbconnect();
+    // 修正箇所
+    $sql = 'SELECT user_name FROM users WHERE user_id = ?';
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1, $user_id, PDO::PARAM_STR);
+    $ps->execute();
+    $user_name = $ps->fetch();
+
+    return $user_name[0];
+}
+
+//ユーザーID作成
+function create_user_id() {
+    $ipAddress = getIpAddress().date('Y/m/d');
+    $user_id = hash('sha256', $ipAddress);
+    return $user_id;
+}
+
 // IPアドレスを取得する関数
 function getIpAddress() {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -41,5 +62,14 @@ function isOneDayBefore($date) {
     } else {
         return false;
     }
+}
+
+//スレッド作成から現在までの経過日数を取得
+function getDateDiff($date1, $date2) {
+    $datetime1 = new DateTime($date1);
+    $datetime2 = new DateTime($date2);
+    $diff = $datetime2->diff($datetime1);
+    $diffInDays = $diff->days + ($diff->h / 24) + ($diff->i / 1440) + ($diff->s / 86400);
+    return round($diffInDays, 1);;
 }
 ?>

@@ -3,7 +3,9 @@
     $dbm = new thread_main();
 
     try{
-        $dbm->create_user_id();
+        $dbm->write_in_comment("test_user_2","テストです",2);
+        echo "接続は成功";
+
         
     }catch(Exception $e){
         echo $e->getMessage();
