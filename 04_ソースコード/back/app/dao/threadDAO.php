@@ -104,8 +104,9 @@ class thread_main
     function getDateDiff($date1, $date2) {
         $datetime1 = new DateTime($date1);
         $datetime2 = new DateTime($date2);
-        $interval = $datetime2->diff($datetime1);
-        return $interval->format('%a');
+        $diff = $datetime2->diff($datetime1);
+        $diffInDays = $diff->days + ($diff->h / 24) + ($diff->i / 1440) + ($diff->s / 86400);
+        return round($diffInDays, 1);;
     }
 
 
