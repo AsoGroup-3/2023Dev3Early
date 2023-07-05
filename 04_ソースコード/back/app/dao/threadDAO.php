@@ -5,7 +5,7 @@
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json; charset=UTF-8');
 require_once 'connectDAO.php';
-require_once 'versatilityDAO.php';
+require_once 'versatility.php';
 
 class thread_main
 {
@@ -21,21 +21,6 @@ class thread_main
         $ps->bindValue(3, $create_date, PDO::PARAM_STR);
         $ps->execute();
     }
-
-    //ユーザーIDからユーザー名取得
-    function get_user_name($user_id)
-    {
-        $pdo = dbconnect();
-        // 修正箇所
-        $sql = 'SELECT user_name FROM users WHERE user_id = ?';
-        $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
-        $ps->execute();
-        $user_name = $ps->fetch();
-
-        return $user_name[0];
-    }
-
     //コメント表示機能
     function thread_comment_display($thread_id)
     {
@@ -52,7 +37,7 @@ class thread_main
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$com_dataに追加している
         foreach ($thread_comment as $row) {
 
-            $user_name = $this->get_user_name($row['user_id']);
+            $user_name = get_user_name($row['user_id']);
 
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],
@@ -90,7 +75,7 @@ class thread_main
                 'thread_name' => $row['thread_name'],
                 'thread_bytes' => $row['thread_bytes'],
                 'thread_create_date' => $row['thread_create_date'],
-                'created_date_time' => $this->getDateDiff($currentDateTime, $row['thread_create_date']),
+                'created_date_time' => getDateDiff($currentDateTime, $row['thread_create_date']),
                 'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
             ));
         }
@@ -113,33 +98,20 @@ class thread_main
         print json_encode($thread_name[0]);
     }
 
-    //スレッド作成から現在までの経過日数を取得
-    function getDateDiff($date1, $date2)
-    {
-        $datetime1 = new DateTime($date1);
-        $datetime2 = new DateTime($date2);
-        $diff = $datetime2->diff($datetime1);
-        $diffInDays = $diff->days + ($diff->h / 24) + ($diff->i / 1440) + ($diff->s / 86400);
-        return round($diffInDays, 1);;
-    }
-
-    function create_user_id()
-    {
-        $ipAddress = getIpAddress() . date('Y/m/d');
-        $user_id = hash('sha256', $ipAddress);
-        // return $user_id;
-        echo $user_id;
-    }
-
-
     // 書き込み機能
-    // function write_in_thread($user_id,$comment_detail,$thread_id)
-    // {
-    //     $pdo = dbconnect();
-    //     $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?)';
-    //     $ps = $pdo->prepare($sql);
-    //     $ps->bindValue(1, $comment_detail, PDO::PARAM_STR);
-    //     $ps->bindValue(2, date("Y/m/d H:i:s"), PDO::PARAM_INT);
-    //     $ps->bindValue(3, $user_id, PDO::PARAM_STR);
-    // }
+    function write_in_comment($user_id,$comment_detail,$thread_id)
+    {
+        $pdo = dbconnect();
+        $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?,?)';
+        $ps = $pdo->prepare($sql);
+        // $ps->bindValue(1, create_user_id(), PDO::PARAM_STR);
+        $ps->bindValue(1, $comment_detail, PDO::PARAM_STR);
+        $ps->bindValue(2, date("Y/m/d H:i:s"), PDO::PARAM_STR);
+        $ps->bindValue(3, $user_id, PDO::PARAM_STR);
+        $ps->bindValue(4, get_user_name($user_id), PDO::PARAM_STR);
+        $ps->bindValue(5, $thread_id, PDO::PARAM_INT);
+
+        $ps->execute();
+    }
+
 }
