@@ -10,15 +10,15 @@ require_once 'versatilityDAO.php';
 class thread_main
 {
     // スレッド登録メソッド
-    function create_thread($thread_title, $thread_detail)
+    function create_thread($thread_title, $thread_detail, $create_date)
     {
         $pdo = dbconnect();
-        $sql = 'INSERT INTO threads (thread_name/*,thread_detail,thread_create_date*/)
-                VALUES (?/*,?,?*/)';
+        $sql = 'INSERT INTO threads (thread_name, thread_detail, thread_create_date)
+                VALUES (?, ?, ?)';
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $thread_title, PDO::PARAM_STR);
-        // $ps->bindValue(2, $thread_detail, PDO::PARAM_STR);
-        // $ps->bindValue(3, date("Y-m-d H:i:s"), PDO::PARAM_STR);
+        $ps->bindValue(2, $thread_detail, PDO::PARAM_STR);
+        $ps->bindValue(3, $create_date, PDO::PARAM_STR);
         $ps->execute();
     }
 
@@ -111,11 +111,11 @@ class thread_main
         $thread_name = $ps->fetch();
 
         print json_encode($thread_name[0]);
-
     }
 
     //スレッド作成から現在までの経過日数を取得
-    function getDateDiff($date1, $date2) {
+    function getDateDiff($date1, $date2)
+    {
         $datetime1 = new DateTime($date1);
         $datetime2 = new DateTime($date2);
         $diff = $datetime2->diff($datetime1);
@@ -123,8 +123,9 @@ class thread_main
         return round($diffInDays, 1);;
     }
 
-    function create_user_id() {
-        $ipAddress = getIpAddress().date('Y/m/d');
+    function create_user_id()
+    {
+        $ipAddress = getIpAddress() . date('Y/m/d');
         $user_id = hash('sha256', $ipAddress);
         // return $user_id;
         echo $user_id;
