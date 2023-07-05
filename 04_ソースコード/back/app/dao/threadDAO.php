@@ -9,6 +9,18 @@ require_once 'versatility.php';
 
 class thread_main
 {
+    // スレッド登録メソッド
+    function create_thread($thread_title, $thread_detail, $create_date)
+    {
+        $pdo = dbconnect();
+        $sql = 'INSERT INTO threads (thread_name, thread_detail, thread_create_date)
+                VALUES (?, ?, ?)';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_title, PDO::PARAM_STR);
+        $ps->bindValue(2, $thread_detail, PDO::PARAM_STR);
+        $ps->bindValue(3, $create_date, PDO::PARAM_STR);
+        $ps->execute();
+    }
     //コメント表示機能
     function thread_comment_display($thread_id)
     {
@@ -84,7 +96,6 @@ class thread_main
         $thread_name = $ps->fetch();
 
         print json_encode($thread_name[0]);
-
     }
 
     // 書き込み機能
