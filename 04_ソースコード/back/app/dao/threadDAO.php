@@ -88,6 +88,7 @@ class thread_main
         print $json_array;
     }
 
+    //スレッドIDからスレッド名を取得
     function get_thread_name($thread_id)
     {
         $pdo = dbconnect();
@@ -101,12 +102,20 @@ class thread_main
 
     }
 
+    //スレッド作成から現在までの経過日数を取得
     function getDateDiff($date1, $date2) {
         $datetime1 = new DateTime($date1);
         $datetime2 = new DateTime($date2);
         $diff = $datetime2->diff($datetime1);
         $diffInDays = $diff->days + ($diff->h / 24) + ($diff->i / 1440) + ($diff->s / 86400);
         return round($diffInDays, 1);;
+    }
+
+    function create_user_id() {
+        $ipAddress = getIpAddress().date('Y/m/d');
+        $user_id = hash('sha256', $ipAddress);
+        // return $user_id;
+        echo $user_id;
     }
 
 

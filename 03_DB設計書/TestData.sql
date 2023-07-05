@@ -1,6 +1,6 @@
-INSERT INTO threads VALUES(null,"test_thread_1",null,"2023-06-16 10:52:34"),
-                          (null,"test_thread_2",null,"2023-06-16 10:52:34"),
-                          (null,"test_thread_3",null,"2023-06-16 10:52:34");
+INSERT INTO threads VALUES(null,"test_thread_1","ここはスレッド１です",null,"2023-06-16 10:52:34"),
+                          (null,"test_thread_2","ここはスレッド２です",null,"2023-06-16 10:52:34"),
+                          (null,"test_thread_3","ここはスレッド３です",null,"2023-06-16 10:52:34");
 
 INSERT INTO users VALUES("test_user_1","テストユーザー１","2023-06-16 10:52:34"),
                         ("test_user_2","テストユーザー２","2023-07-16 10:54:34"),

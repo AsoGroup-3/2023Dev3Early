@@ -15,11 +15,11 @@ function getIpAddress() {
 }
 
 //IPアドレスをハッシュ化して返す関数
-function getHashedIpAddress() {
-    $ipAddress = getIpAddress();
-    $hashedIpAddress = hash('sha256', $ipAddress);
-    return $hashedIpAddress;
-}
+// function create_user_id() {
+//     $ipAddress = getIpAddress().date('Y/m/d');
+//     $user_id = hash('sha256', $ipAddress);
+//     return $user_id;
+// }
 
 // セッションの有無を true/falseで返却する関数
 function checkSession() {
