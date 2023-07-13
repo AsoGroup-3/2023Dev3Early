@@ -37,7 +37,7 @@ class thread_main
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$com_dataに追加している
         foreach ($thread_comment as $row) {
 
-            $user_name = get_user_name($row['user_id']);
+            $user_name = $this->get_user_name($row['user_id']);
 
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],
@@ -108,10 +108,55 @@ class thread_main
         $ps->bindValue(1, $comment_detail, PDO::PARAM_STR);
         $ps->bindValue(2, date("Y/m/d H:i:s"), PDO::PARAM_STR);
         $ps->bindValue(3, $user_id, PDO::PARAM_STR);
-        $ps->bindValue(4, get_user_name($user_id), PDO::PARAM_STR);
+        $ps->bindValue(4, $this->get_user_name($user_id), PDO::PARAM_STR);
         $ps->bindValue(5, $thread_id, PDO::PARAM_INT);
 
         $ps->execute();
     }
+
+    //ユーザー名登録
+    function create_user($user_id,$user_name){
+        $pdo = dbconnect();
+        $sql = 'INSERT INTO users VALUE(?,?,?)';
+        $ps = $pdo->prepare($sql);
+
+        if($user_name==""){
+            $user_name="風吹けば名無し";
+        }
+        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
+        $ps->bindValue(2, $user_name, PDO::PARAM_STR);
+        $ps->bindValue(3, date("Y/m/d H:i:s"), PDO::PARAM_STR);
+
+        $ps->execute();
+    }
+
+    //ユーザーIDからユーザー名取得
+    function get_user_name($user_id)
+    {
+        $pdo = dbconnect();
+        // 修正箇所
+        $sql = 'SELECT user_name FROM users WHERE user_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
+        $ps->execute();
+        $user_name = $ps->fetch();
+
+        $user_name = $user_name["user_name"];
+        return $user_name;
+    }
+
+    //ユーザー名更新
+    function update_user_name($user_id,$user_name){
+        $pdo = dbconnect();
+        $sql = 'UPDATE users SET user_name = ? WHERE user_id = ?';
+        $ps = $pdo->prepare($sql);
+
+        $ps->bindValue(1, $user_name, PDO::PARAM_STR);
+        $ps->bindValue(2, $user_id, PDO::PARAM_STR);
+
+        $ps->execute();
+    }
+
+    // ユーザー名更新機能
 
 }

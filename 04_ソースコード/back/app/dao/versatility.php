@@ -1,17 +1,4 @@
 <?php
-//ユーザーIDからユーザー名取得
-function get_user_name($user_id)
-{
-    $pdo = dbconnect();
-    // 修正箇所
-    $sql = 'SELECT user_name FROM users WHERE user_id = ?';
-    $ps = $pdo->prepare($sql);
-    $ps->bindValue(1, $user_id, PDO::PARAM_STR);
-    $ps->execute();
-    $user_name = $ps->fetch();
-
-    return $user_name[0];
-}
 
 //ユーザーID作成
 function create_user_id() {
@@ -43,11 +30,11 @@ function getIpAddress() {
 // }
 
 // セッションの有無を true/falseで返却する関数
-function checkSession() {
+function checkSession($session_key) {
     session_start();
 
     // セッションの有無を確認
-    $sessionExists = isset($_SESSION['session_key']);
+    $sessionExists = isset($_SESSION[$session_key]);
 
     // 結果を返す
     return $sessionExists;
