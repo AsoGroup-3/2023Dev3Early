@@ -1,0 +1,17 @@
+<?php
+require_once "../app/dao/ringDAO.php";
+$dbm = new ring_main();
+
+$thread_id = $_POST['thread_id'];
+$ring_title = $_POST['ring_title'];
+$ring_detail = $_POST['ring_detail'];
+$create_user = $_POST['create_user'];
+$invitation_user = $_POST['invitation_user'];
+$res_num = $_POST['res_num'];
+$create_date = $_POST['create_date'];
+
+try {
+    $dbm->create_ring($ring_title, $ring_detail, $create_user, $invitation_user, $res_num, $create_date, $thread_id);
+} catch (Exception $e) {
+    echo "エラー";
+}

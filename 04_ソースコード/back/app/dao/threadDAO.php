@@ -99,7 +99,7 @@ class thread_main
     }
 
     // 書き込み機能
-    function write_in_comment($user_id,$comment_detail,$thread_id)
+    function write_in_comment($user_id, $comment_detail, $thread_id)
     {
         $pdo = dbconnect();
         $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?,?)';
@@ -113,5 +113,4 @@ class thread_main
 
         $ps->execute();
     }
-
 }
