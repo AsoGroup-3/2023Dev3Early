@@ -27,8 +27,12 @@ CREATE TABLE thread_comments(
 
 CREATE TABLE rings (
     ring_id         INT           NOT NULL AUTO_INCREMENT,
+    ring_name       VARCHAR(255)  NOT NULL,
+    ring_detail     VARCHAR(255)  NOT NULL,
     create_user     VARCHAR(128)  NOT NULL,
     invitation_user VARCHAR(128)  NOT NULL,
+    res_num         INT           NOT NULL,
+    create_date     DATETIME      NOT NULL,
     thread_id       INT           NOT NULL,
     PRIMARY KEY (ring_id) ,
     FOREIGN KEY (create_user) REFERENCES users(user_id),
