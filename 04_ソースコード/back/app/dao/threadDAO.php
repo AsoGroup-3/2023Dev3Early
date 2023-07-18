@@ -7,6 +7,7 @@ header('Content-Type: application/json; charset=UTF-8');
 require_once 'connectDAO.php';
 require_once 'userDAO.php';
 require_once 'versatility.php';
+require_once 'userDAO.php';
 
 class thread_main
 {
@@ -100,7 +101,7 @@ class thread_main
     }
 
     // 書き込み機能
-    function write_in_comment($user_id,$comment_detail,$thread_id)
+    function write_in_comment($user_id, $comment_detail, $thread_id)
     {
         $userDB = new user_main;
         $pdo = dbconnect();
@@ -115,5 +116,4 @@ class thread_main
 
         $ps->execute();
     }
-
 }
