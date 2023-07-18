@@ -27,6 +27,8 @@ require "../components/header.php";
 
                 <div style="text-align: right;"><button type="button" class="btn btn-default" @click="createComment()">作成</button></div>
             </div>
+
+            <?php  ?>
         </form>
     </div>
 

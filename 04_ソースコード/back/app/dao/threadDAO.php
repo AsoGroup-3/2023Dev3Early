@@ -37,15 +37,12 @@ class thread_main
 
         //データベースから持ってきたデータをforeachを利用してデータの数だけ$com_dataに追加している
         foreach ($thread_comment as $row) {
-            $userDB = new user_main;
-            $user_name = $userDB->get_user_name($row['user_id']);
-
             array_push($com_data, array(
                 'thread_comment_id' => $row['thread_comment_id'],
                 'comment' => $row['comments'],
                 'create_at' => $row['create_at'],
                 'user_id' => $row['user_id'],
-                'user_name' => $user_name,
+                'user_name' => $row['user_name'],
                 'thread_id' => $row['thread_id']
             ));
         }
@@ -102,7 +99,6 @@ class thread_main
     // 書き込み機能
     function write_in_comment($user_id,$comment_detail,$thread_id)
     {
-        $userDB = new user_main;
         $pdo = dbconnect();
         $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?,?)';
         $ps = $pdo->prepare($sql);
@@ -110,8 +106,19 @@ class thread_main
         $ps->bindValue(1, $comment_detail, PDO::PARAM_STR);
         $ps->bindValue(2, date("Y/m/d H:i:s"), PDO::PARAM_STR);
         $ps->bindValue(3, $user_id, PDO::PARAM_STR);
-        $ps->bindValue(4, $userDB->get_user_name($user_id), PDO::PARAM_STR);
+        $ps->bindValue(4, get_user_name($user_id), PDO::PARAM_STR);
         $ps->bindValue(5, $thread_id, PDO::PARAM_INT);
+
+        $ps->execute();
+    }
+
+    //指定したuser_idが存在するかどうかをチェックする
+    function user_id_checker($user_id){
+        $pdo = dbconnect();
+        $sql = 'SELECT user_id FROM users WHERE user_id = ?';
+        $ps = $pdo->prepare($sql);
+
+        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
 
         $ps->execute();
     }
