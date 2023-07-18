@@ -3,7 +3,7 @@ require_once "../app/dao/threadDAO.php";
 $dbm = new thread_main();
 
     try{
-        echo $dbm->get_user_name("createTest");
+        // echo $dbm->get_user_name("createTest");
 
         
     }catch(Exception $e){

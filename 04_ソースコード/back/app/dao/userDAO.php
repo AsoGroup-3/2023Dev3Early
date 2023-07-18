@@ -7,8 +7,6 @@ header('Content-Type: application/json; charset=UTF-8');
 require_once 'connectDAO.php';
 require_once 'versatility.php';
 
-class user_main
-{
     //ユーザー名登録
     function create_user($user_id,$user_name){
         $pdo = dbconnect();
@@ -66,5 +64,4 @@ class user_main
 
         return checkSession($user_create_day["create_at"]);
     }
-}
 ?>

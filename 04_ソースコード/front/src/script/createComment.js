@@ -4,6 +4,9 @@ const vm = new Vue({
       user_name: '',
       comment_detail: '',
     },
+      mounted(){
+        this.setUserName();
+      },
       methods: {
           createComment() {          
             const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/commentCreate.php";
@@ -22,6 +25,25 @@ const vm = new Vue({
                 // エラーハンドリングのコード
                 console.error(error);
               });
+          },
+          setUserName(){
+            if(this.checkSessionKey("user")){
+              this.user_name = this.getSessionValue("user_name");
+            }else{
+              console.log("test");
+            }
+          },
+          checkSessionKey(key) {
+            return sessionStorage.getItem(key) !== null;
+          },
+          getSessionValue(key) {
+            var sessionData = sessionStorage.getItem('user');
+            if (sessionData) {
+              var sessionObject = JSON.parse(sessionData);
+              return sessionObject[key];
+            } else {
+              return null;
+            }
           },
           getQueryParam(paramName) {
             const urlParams = new URLSearchParams(window.location.search);
