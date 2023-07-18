@@ -78,10 +78,8 @@ require_once 'versatility.php';
         $check_result = $ps->fetch();
 
         if(count($check_result) === 0){
-            echo "console.log('idは存在しない')";
             return true;
         }else{
-            echo "console.log('idは存在する')";
             return false;
         }
     }
