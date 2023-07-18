@@ -16,9 +16,9 @@ INSERT INTO thread_comments VALUES(null,"スレ１コメントテスト１","202
                                   (null,"スレ３コメントテスト２","2023-06-16 10:52:34","test_user_2","テストユーザー２",3),
                                   (null,"スレ３コメントテスト３","2023-06-16 10:52:34","test_user_3","テストユーザー３",3);
 
-INSERT INTO rings VALUES(null,"test_user_1","test_user_2",1),
-                        (null,"test_user_2","test_user_3",2),
-                        (null,"test_user_3","test_user_1",3);
+INSERT INTO rings VALUES(null, "リング1", "スレッド１のリング", "test_user_1","test_user_2",50,"2023-06-16 10:52:34", 1),
+                        (null, "リング2", "スレッド２のリング", "test_user_2","test_user_3",100,"2023-06-16 10:52:34", 2),
+                        (null, "リング3", "スレッド３のリング", "test_user_3","test_user_1",300,"2023-06-16 10:52:34", 3);
 
 INSERT INTO ring_comments VALUES(null,"コメントテスト１","2023-06-16 10:52:34","test_user_1",1),
                                 (null,"コメントテスト２","2023-06-16 10:52:34","test_user_2",1),

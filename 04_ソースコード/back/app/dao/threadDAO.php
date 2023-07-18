@@ -7,6 +7,7 @@ header('Content-Type: application/json; charset=UTF-8');
 require_once 'connectDAO.php';
 require_once 'userDAO.php';
 require_once 'versatility.php';
+require_once 'userDAO.php';
 
 class thread_main
 {
@@ -97,7 +98,7 @@ class thread_main
     }
 
     // 書き込み機能
-    function write_in_comment($user_id,$comment_detail,$thread_id)
+    function write_in_comment($user_id, $comment_detail, $thread_id)
     {
         $pdo = dbconnect();
         $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?,?)';
@@ -111,6 +112,7 @@ class thread_main
 
         $ps->execute();
     }
+
 
     //指定したuser_idが存在するかどうかをチェックする
     function user_id_checker($user_id){

@@ -29,6 +29,7 @@ ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padSta
               // エラーハンドリングのコード
               console.error(error);
             });
+            window.location.href = 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/home.php';
         },
     },
   computed: {
