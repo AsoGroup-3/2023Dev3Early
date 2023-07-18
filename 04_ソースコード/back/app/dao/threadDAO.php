@@ -6,6 +6,7 @@ header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json; charset=UTF-8');
 require_once 'connectDAO.php';
 require_once 'versatility.php';
+require_once 'userDAO.php';
 
 class thread_main
 {

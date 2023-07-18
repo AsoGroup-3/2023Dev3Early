@@ -24,9 +24,7 @@ ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padSta
           date.append('invitation_user', this.invitation_user);
           date.append('res_num', this.res_num);
           data.append('create_date', formatted);
-          data.append('thread_id', this.thread_id);
-          // セッションにアクセスしてユーザーのIDを取得する処理を実装する場所
-          // ない場合は少なくとも一度は書き込みをしてください、のエラー表示を出す
+          data.append('thread_id', this.this.getQueryParam("thread_id"));
 
           
           axios.post(url, data)
@@ -39,7 +37,11 @@ ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padSta
               console.error(error);
             });
             window.location.href = 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/home.php';
-        },
+      },
+      getQueryParam(paramName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(paramName);
+      },
     },
   computed: {
   }
