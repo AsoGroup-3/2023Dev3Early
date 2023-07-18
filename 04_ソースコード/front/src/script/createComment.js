@@ -1,5 +1,5 @@
-const vm = new Vue({
-    el: '#app',
+const com_vm = new Vue({
+    el: '#com_app',
     data: {
       user_name: '',
       comment_detail: '',
@@ -26,12 +26,18 @@ const vm = new Vue({
                 console.error(error);
               });
           },
+          //セッションから取得したユーザー名をテキストボックスにセットする
           setUserName(){
-            if(this.checkSessionKey("user")){
-              this.user_name = this.getSessionValue("user_name");
-            }else{
-              console.log("test");
-            }
+            const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/getSession.php";
+            const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
+            axios
+              .get(`${url}?timestamp=${timestamp}`)
+              .then((response) => {
+                this.user_name = response.data; // 取得したデータをcommentsに代入
+              })
+              .catch((error) => {
+                console.log(error); // エラーが発生した場合はエラーメッセージをコンソールに表示
+              });
           },
           checkSessionKey(key) {
             return sessionStorage.getItem(key) !== null;
