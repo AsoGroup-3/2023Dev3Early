@@ -24,7 +24,6 @@ ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padSta
             .then(response => {
               // レスポンスを処理するコード
               console.log(response.data); 
-              window.location.assign();
             })
             .catch(error => {
               // エラーハンドリングのコード

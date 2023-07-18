@@ -4,6 +4,7 @@
 function create_user_id() {
     $ipAddress = getIpAddress().date('Y/m/d');
     $user_id = hash('sha256', $ipAddress);
+    
     return $user_id;
 }
 
