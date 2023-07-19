@@ -21,6 +21,9 @@ class thread_main
         $ps->bindValue(2, $thread_detail, PDO::PARAM_STR);
         $ps->bindValue(3, $create_date, PDO::PARAM_STR);
         $ps->execute();
+
+        $id = $pdo->lastInsertId();
+        print json_encode($id);
     }
     //コメント表示機能
     function thread_comment_display($thread_id)
