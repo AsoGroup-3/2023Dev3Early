@@ -32,6 +32,8 @@ try{
         }else{
             $dbm->write_in_comment($userId, $_POST["comment_detail"], $_POST["thread_id"]);
         }
+            // create_user($userId, $userName);
+            // $dbm->write_in_comment($userId, $_POST["comment_detail"], $_POST["thread_id"]);
     }
 }catch(Exception $e){
     echo $e->getMessage();
