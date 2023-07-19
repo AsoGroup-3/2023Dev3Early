@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -44,6 +44,7 @@ require_once "../components/header.php";
             <p>{{item.comment}}</p>
         </div>
     </div>
+
 
     <?php
     require_once "../components/comment_create_form.php";
