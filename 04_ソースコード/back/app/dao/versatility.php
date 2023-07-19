@@ -1,15 +1,17 @@
 <?php
 
 //ユーザーID作成
-function create_user_id() {
-    $ipAddress = getIpAddress().date('Y/m/d');
+function create_user_id()
+{
+    $ipAddress = getIpAddress() . date('Y/m/d');
     $user_id = hash('sha256', $ipAddress);
     $shortened_user_id = substr($user_id, 0, strlen($user_id) / 2);
     return $shortened_user_id;
 }
 
 // IPアドレスを取得する関数
-function getIpAddress() {
+function getIpAddress()
+{
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         // プロキシを経由している場合
         $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -31,8 +33,11 @@ function getIpAddress() {
 // }
 
 // セッションの有無を true/falseで返却する関数
-function checkSession($session_key) {
-    session_start();
+function checkSession($session_key)
+{
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     // セッションの有無を確認
     $sessionExists = isset($_SESSION[$session_key]);
@@ -42,7 +47,8 @@ function checkSession($session_key) {
 }
 
 // 取得した日付と現在の日付を比較する関数
-function isOneDayBefore($date) {
+function isOneDayBefore($date)
+{
     $previousDate = date('Y-m-d', strtotime('-1 day'));
 
     if ($date === $previousDate) {
@@ -53,11 +59,11 @@ function isOneDayBefore($date) {
 }
 
 //スレッド作成から現在までの経過日数を取得
-function getDateDiff($date1, $date2) {
+function getDateDiff($date1, $date2)
+{
     $datetime1 = new DateTime($date1);
     $datetime2 = new DateTime($date2);
     $diff = $datetime2->diff($datetime1);
     $diffInDays = $diff->days + ($diff->h / 24) + ($diff->i / 1440) + ($diff->s / 86400);
     return round($diffInDays, 1);;
 }
-?>

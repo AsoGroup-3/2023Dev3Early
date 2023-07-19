@@ -19,10 +19,13 @@ try {
             'user_name' => $userName,
         ];
 
-        $dbm->create_user($userId, $userName);
+        create_user($userId, $userName);
     }
 
-    $creeate_user = $_SESSION['user']['user_id'];
+
+
+
+    $create_user = $_SESSION['user']['user_id'];
 
     $dbm->create_ring($ring_title, $ring_detail, $create_user, $invitation_user, $res_num, $create_date, $thread_id);
 } catch (Exception $e) {
