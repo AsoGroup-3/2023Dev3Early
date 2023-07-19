@@ -24,6 +24,15 @@ require_once "../components/header.php";
         <!-- タイトルエリア -->
         <h2>{{thread_name}}</h2>
 
+        <!-- <button type="button" class="btn btn-danger thread-btn" onclick="location.href='./threadCreate.php'"> -->
+
+        <?php
+        print "<button type=\"button\" class=\"btn btn-danger thread-btn\" onclick=\"location.href='./createRing.php?thread_id=" . $_GET['thread_id'] . "'\">";
+        ?>
+
+        RESPONSE BUTTLE START
+        </button>
+
         <!-- レス数・バイト数表示エリア -->
         <div class="comment_head">
             <ul>
