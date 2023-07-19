@@ -68,19 +68,10 @@ require_once 'versatility.php';
     //指定したuser_idが存在するかどうかをチェックする
     function user_id_checker($user_id){
         $pdo = dbconnect();
-        $sql = 'SELECT user_id FROM users WHERE user_id = ?';
+        $sql = 'SELECT COUNT(*) FROM users WHERE user_id = ?';
         $ps = $pdo->prepare($sql);
-
-        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
-
-        $ps->execute();
-
-        $check_result = $ps->fetch();
-
-        if(count($check_result) === 0){
-            return true;
-        }else{
-            return false;
-        }
+        $ps->execute([$user_id]);
+        $check_result = $ps->fetchColumn();
+        return $check_result === 0;
     }
 ?>

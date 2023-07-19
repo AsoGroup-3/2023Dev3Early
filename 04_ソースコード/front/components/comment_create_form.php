@@ -1,4 +1,3 @@
-<body class="background">
     <div id="com_app">
         <form class="form-inline create_area">
             <div>
@@ -10,4 +9,3 @@
             </div>
         </form>
     </div>
-</body>

@@ -4,7 +4,8 @@
 function create_user_id() {
     $ipAddress = getIpAddress().date('Y/m/d');
     $user_id = hash('sha256', $ipAddress);
-    return $user_id;
+    $shortened_user_id = substr($user_id, 0, strlen($user_id) / 2);
+    return $shortened_user_id;
 }
 
 // IPアドレスを取得する関数
