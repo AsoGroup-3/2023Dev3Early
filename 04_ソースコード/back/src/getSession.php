@@ -1,4 +1,5 @@
 <?php
+
 require_once "../app/dao/threadDAO.php";
 
 if(checkSession('user')){

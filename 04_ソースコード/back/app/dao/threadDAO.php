@@ -7,7 +7,6 @@ header('Content-Type: application/json; charset=UTF-8');
 require_once 'connectDAO.php';
 require_once 'userDAO.php';
 require_once 'versatility.php';
-require_once 'userDAO.php';
 
 class thread_main
 {
@@ -22,6 +21,9 @@ class thread_main
         $ps->bindValue(2, $thread_detail, PDO::PARAM_STR);
         $ps->bindValue(3, $create_date, PDO::PARAM_STR);
         $ps->execute();
+
+        $id = $pdo->lastInsertId();
+        print json_encode($id);
     }
     //コメント表示機能
     function thread_comment_display($thread_id)
@@ -98,7 +100,7 @@ class thread_main
     }
 
     // 書き込み機能
-    function write_in_comment($user_id, $comment_detail, $thread_id)
+    function write_in_comment($user_id,$comment_detail,$thread_id)
     {
         $pdo = dbconnect();
         $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?,?)';
