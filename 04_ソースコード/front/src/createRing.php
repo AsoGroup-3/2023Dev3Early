@@ -18,29 +18,30 @@ require "../components/header.php";
 </head>
 
 <body class="background">
+    <div id="app">
+        <form class="form-inline create_area">
+            <div>
+                <p class="form-inline">タイトル：　　<input type="text" v-model="ring_title" class="input_area"></p>
 
-    <form class="form-inline create_area">
-        <div>
-            <p class="form-inline">タイトル：　　<input type="text" v-model="ring_title" class="input_area"></p>
+                <p class="form-inline">対戦相手ID：　<input type="text" v-model="invitation_user" class="input_area"></p>
 
-            <p class="form-inline">対戦相手ID：　<input type="text" v-model="invitation_user" class="input_area"></p>
-
-            <p class="form-inline">内容：　　　　<input type="text" v-model="ring_detail" class="input_area_lg"></p>
-            <p class="form-inline">レス数：　　　<select v-model="res_num">
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="300">300</option>
-                    <option value="500">500</option>
-                </select></p>
+                <p class="form-inline">内容：　　　　<input type="text" v-model="ring_detail" class="input_area_lg"></p>
+                <p class="form-inline">レス数：　　　<select v-model="res_num">
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="300">300</option>
+                        <option value="500">500</option>
+                    </select></p>
 
 
-            <div style="text-align: right;">
-                <button type="button" class="btn btn-default border border-2 border-dark" @click="createRing()">
-                    作成
-                </button>
+                <div style="text-align: right;">
+                    <button type="button" class="btn btn-default border border-2 border-dark" @click="createRing()">
+                        作成
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 
 
     <!-- Optional JavaScript -->
