@@ -113,16 +113,4 @@ class thread_main
         $ps->execute();
     }
 
-
-    //指定したuser_idが存在するかどうかをチェックする
-    function user_id_checker($user_id){
-        $pdo = dbconnect();
-        $sql = 'SELECT user_id FROM users WHERE user_id = ?';
-        $ps = $pdo->prepare($sql);
-
-        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
-
-        $ps->execute();
-    }
-
 }

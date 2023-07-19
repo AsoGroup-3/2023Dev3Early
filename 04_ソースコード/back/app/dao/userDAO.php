@@ -64,4 +64,14 @@ require_once 'versatility.php';
 
         return checkSession($user_create_day["create_at"]);
     }
+
+    //指定したuser_idが存在するかどうかをチェックする
+    function user_id_checker($user_id){
+        $pdo = dbconnect();
+        $sql = 'SELECT COUNT(*) FROM users WHERE user_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->execute([$user_id]);
+        $check_result = $ps->fetchColumn();
+        return $check_result === 0;
+    }
 ?>

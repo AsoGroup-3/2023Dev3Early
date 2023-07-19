@@ -26,8 +26,14 @@ try{
             'user_name' => $userName,
         ];
     
-        create_user($userId, $userName);
-        $dbm->write_in_comment($userId, $_POST["comment_detail"], $_POST["thread_id"]);
+        if(user_id_checker($userId)){
+            create_user($userId, $userName);
+            $dbm->write_in_comment($userId, $_POST["comment_detail"], $_POST["thread_id"]);
+        }else{
+            $dbm->write_in_comment($userId, $_POST["comment_detail"], $_POST["thread_id"]);
+        }
+            // create_user($userId, $userName);
+            // $dbm->write_in_comment($userId, $_POST["comment_detail"], $_POST["thread_id"]);
     }
 }catch(Exception $e){
     echo $e->getMessage();
