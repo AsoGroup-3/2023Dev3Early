@@ -115,12 +115,12 @@ class thread_main
     }
 
     //スレッド検索・取得機能
-    function serch_thread_get($keyword)
+    function search_thread_get($keyword)
     {
         $pdo = dbconnect();
         $sql = 'SELECT * FROM threads WHERE thread_name LIKE ?';
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, "%".$keyword."%", PDO::PARAM_STR);
+        $ps->bindValue(1, '%'.$keyword.'%', PDO::PARAM_STR);
         $ps->execute();
         $thread = $ps->fetchAll();
 

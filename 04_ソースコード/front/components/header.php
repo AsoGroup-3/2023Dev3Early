@@ -14,9 +14,11 @@
             <img src='../assets/img/mugen_unagi.PNG'>
         </a>
 
-        <input type='text' class='search-box'>
-        <button class='search-button'>
-            <img src='../assets/img/icons8-search-50.png'>
-        </button>
+        <div id="s_app">
+            <input type='text' class='search-box' v-model="keyword">
+            <button class='search-button' @click="fetchSearchThreads()">
+                <img src='../assets/img/icons8-search-50.png'>
+            </button>
+        </div>
     </header>
 </body>

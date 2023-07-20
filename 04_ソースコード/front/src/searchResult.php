@@ -2,8 +2,7 @@
 <html lang="ja">
 
 <?php
-require_once "../components/header.php";
-require_once "../components/thread_create_buton.php";
+require "../components/header.php";
 ?>
 
 <head>
@@ -11,55 +10,36 @@ require_once "../components/thread_create_buton.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/searchResult.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
-    <title>Document</title>
+    <title>スレッド検索画面</title>
 </head>
 
 <body class="background">
-    <div class="img_center">
-        <a href=""><img class="home_icon_img" src="../assets/img/icon.png"> </a>
-    </div>
-
-    <div class="explanation">
-        <p>「レスバ」から「レスバ」までを手広くレスバするレスバ専用</p>
-        <p>専用掲示板群「レスバ・オブザ・リング」へようこそ！</p>
-        <p>「レスバ」って何？という方はウィキペディアをご覧ください</p>
-    </div>
-
-    <div class="input-group" style="width:300px;">
-        <input type="text" class="form-control" placeholder="">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-default" onclick="location.href='./serarchResult.html'">
-                <i class="bi bi-search"></i>
-            </button>
-        </span>
-    </div>
-
-    <div class="img_center">
-        <img class="home_top_img" src="../assets/img/yanagawa_Vs.png">
-    </div>
-
-    <h1>
-        <p class="text-center">新着スレ一覧</p>
-    </h1>
-
-
-    <div id="app">
-        <div class="container">
-            <div class="row align-items-center">
-                <div v-for="(item, i) in threads" class="col-md-6">
-                    <a v-bind:href="item.thread_url">{{item.thread_name}}</a>
-                    <p>{{item.thread_create_date}}</p>
-                    <p>{{item.created_date_time}}日</p>
+    <div id="sr_app">
+        <div v-for="(item, i) in s_threads" class="container text-left " style="margin-left: 0px;">
+            <a v-bind:href="item.thread_url">
+                <div class="row" style="padding-left: 5%; margin-top: 4%;">
+                    <div class="col-10 text-truncate">
+                        <div class="titleText">{{item.thread_name}}</div>
+                    </div>
+                    <div class="col-1">
+                        <span class="commentCount">（１０）</span>
+                    </div>
+                    <div class="col-1">
+                        <span class="icon">☺</span>
+                    </div>
+                    <div class="col-4">
+                        <span class="createDate">{{item.created_date_time}}</span>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
-    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -71,8 +51,9 @@ require_once "../components/thread_create_buton.php";
     <!-- JSONを扱うためのCDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- JSの読み込み -->
-    <script src="./script/home.js"></script>
     <script src="./script/searchThread.js"></script>
+    <script src="./script/searchResult.js"></script>
 </body>
+
 
 </html>
