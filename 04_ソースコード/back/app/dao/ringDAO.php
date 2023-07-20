@@ -24,4 +24,51 @@ class ring_main
         $ps->bindValue(7, $thread_id, PDO::PARAM_INT);
         $ps->execute();
     }
+
+    function ring_comment_display($thread_id)
+    {
+        $pdo = dbconnect();
+        $sql = 'SELECT * 
+                FROM ring_comments as RC
+                INNER JOIN rings as RG
+                ON RC.ring_id = RG.ring_id
+                WHERE RG.thread_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
+        $ps->execute();
+        $ring_comments = $ps->fetchAll();
+
+        // var_dump($ring_comments);
+
+        // 配列の宣言（無いとエラーが発生した）
+        $com_data = array();
+
+        // データベースから取得したデータをforeachを利用して$com_dataに挿入
+        foreach ($ring_comments as $row) {
+            array_push($com_data, array(
+                'ring_comment_id' => $row['ring_comment_id'],
+                'comment' => $row['ring_comment'],
+                'create_at' => $row['create_date'],
+                'user_id' => $row['user_id'],
+                'user_name' => get_user_name($row['user_id']),
+                'ring_id' => $row['ring_id'],
+            ));
+        }
+
+        $json_array = json_encode($com_data);
+
+        print $json_array;
+    }
+
+    function get_ring_name_to_thread_id($thread_id)
+    {
+        $pdo = dbconnect();
+        $sql = 'SELECT ring_name FROM rings WHERE thread_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
+        $ps->execute();
+        $ring_name = $ps->fetch();
+
+        print json_encode($ring_name[0]);
+    }
 }
