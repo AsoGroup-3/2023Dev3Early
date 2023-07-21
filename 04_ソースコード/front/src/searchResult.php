@@ -26,13 +26,13 @@ require "../components/header.php";
                         <div class="titleText">{{item.thread_name}}</div>
                     </div>
                     <div class="col-1">
-                        <span class="commentCount">（１０）</span>
+                        <span class="commentCount"></span>
                     </div>
                     <div class="col-1">
-                        <span class="icon">☺</span>
+                        <span class="icon"></span>
                     </div>
                     <div class="col-4">
-                        <span class="createDate">{{item.created_date_time}}</span>
+                        <span class="createDate">{{item.thread_create_date}}</span>
                     </div>
                 </div>
             </a>
@@ -50,6 +50,8 @@ require "../components/header.php";
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- JSONを扱うためのCDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- axiosを扱うためのCDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JSの読み込み -->
     <script src="./script/searchThread.js"></script>
     <script src="./script/searchResult.js"></script>

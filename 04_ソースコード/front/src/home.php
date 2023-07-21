@@ -70,6 +70,8 @@ require_once "../components/thread_create_buton.php";
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- JSONを扱うためのCDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- axiosを扱うためのCDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JSの読み込み -->
     <script src="./script/home.js"></script>
     <script src="./script/searchThread.js"></script>
