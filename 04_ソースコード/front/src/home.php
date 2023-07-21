@@ -19,35 +19,34 @@ require_once "../components/thread_create_buton.php";
 </head>
 
 <body class="background">
-    <div class="img_center">
-        <a href=""><img class="home_icon_img" src="../assets/img/icon.png"> </a>
-    </div>
-
-    <div class="explanation">
-        <p>「レスバ」から「レスバ」までを手広くレスバするレスバ専用</p>
-        <p>専用掲示板群「レスバ・オブザ・リング」へようこそ！</p>
-        <p>「レスバ」って何？という方はウィキペディアをご覧ください</p>
-    </div>
-
-    <div class="input-group" style="width:300px;">
-        <input type="text" class="form-control" placeholder="">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-default" onclick="location.href='./serarchResult.html'">
-                <i class="bi bi-search"></i>
-            </button>
-        </span>
-    </div>
-
-    <div class="img_center">
-        <img class="home_top_img" src="../assets/img/yanagawa_Vs.png">
-    </div>
-
-    <h1>
-        <p class="text-center">新着スレ一覧</p>
-    </h1>
-
-
     <div id="app">
+        <div class="img_center">
+            <a href=""><img class="home_icon_img" src="../assets/img/icon.png"> </a>
+        </div>
+
+        <div class="explanation">
+            <p>「レスバ」から「レスバ」までを手広くレスバするレスバ専用</p>
+            <p>専用掲示板群「レスバ・オブザ・リング」へようこそ！</p>
+            <p>「レスバ」って何？という方はウィキペディアをご覧ください</p>
+        </div>
+
+        <div class="input-group" style="width:300px;">
+            <input type="text" class="form-control" placeholder="" v-model="keyword">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" @click="fetchSearchThreads()">
+                    <i class="bi bi-search"></i>
+                </button>
+            </span>
+        </div>
+
+        <div class="img_center">
+            <img class="home_top_img" src="../assets/img/yanagawa_Vs.png">
+        </div>
+
+        <h1>
+            <p class="text-center">新着スレ一覧</p>
+        </h1>
+
         <div class="container">
             <div class="row align-items-center">
                 <div v-for="(item, i) in threads" class="col-md-6">
