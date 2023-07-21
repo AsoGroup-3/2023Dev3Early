@@ -138,12 +138,25 @@ class thread_main
                 'thread_create_date' => $row['thread_create_date'],
                 'created_date_time' => getDateDiff($currentDateTime, $row['thread_create_date']),
                 'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
+                'thread_count' => $this->count_thread($row['thread_id']),
             ));
         }
         //arrayの中身をJSON形式に変換している
         $json_array = json_encode($thread_data);
 
         print $json_array;
+    }
+
+    // スレッド件数取得
+    function count_thread($thread_id){
+        $pdo = dbconnect();
+        $sql = 'SELECT COUNT(*) FROM thread_comments WHERE thread_id = ?';
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $thread_id, PDO::PARAM_INT);
+        $ps->execute();
+        $thread_count = $ps->fetch();
+
+        return $thread_count[0];
     }
     
 

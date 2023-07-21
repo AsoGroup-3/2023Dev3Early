@@ -26,7 +26,7 @@ require "../components/header.php";
                         <div class="titleText">{{item.thread_name}}</div>
                     </div>
                     <div class="col-1">
-                        <span class="commentCount"></span>
+                        <span class="commentCount">({{item.thread_count}})</span>
                     </div>
                     <div class="col-1">
                         <span class="icon"></span>
