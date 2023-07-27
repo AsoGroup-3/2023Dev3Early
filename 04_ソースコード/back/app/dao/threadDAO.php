@@ -77,7 +77,7 @@ class thread_main
                 'thread_bytes' => $row['thread_bytes'],
                 'thread_create_date' => $row['thread_create_date'],
                 'created_date_time' => getDateDiff($currentDateTime, $row['thread_create_date']),
-                'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
+                'thread_url' => 'https://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
             ));
         }
         //arrayの中身をJSON形式に変換している
@@ -100,7 +100,7 @@ class thread_main
     }
 
     // 書き込み機能
-    function write_in_comment($user_id,$comment_detail,$thread_id)
+    function write_in_comment($user_id, $comment_detail, $thread_id)
     {
         $pdo = dbconnect();
         $sql = 'INSERT INTO thread_comments VALUE(null,?,?,?,?,?)';
@@ -120,7 +120,7 @@ class thread_main
         $pdo = dbconnect();
         $sql = 'SELECT * FROM threads WHERE thread_name LIKE ?';
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, '%'.$keyword.'%', PDO::PARAM_STR);
+        $ps->bindValue(1, '%' . $keyword . '%', PDO::PARAM_STR);
         $ps->execute();
         $thread = $ps->fetchAll();
 
@@ -137,7 +137,7 @@ class thread_main
                 'thread_bytes' => $row['thread_bytes'],
                 'thread_create_date' => $row['thread_create_date'],
                 'created_date_time' => getDateDiff($currentDateTime, $row['thread_create_date']),
-                'thread_url' => 'http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
+                'thread_url' => 'https://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
                 'thread_count' => $this->count_thread($row['thread_id']),
             ));
         }
@@ -148,7 +148,8 @@ class thread_main
     }
 
     // スレッド件数取得
-    function count_thread($thread_id){
+    function count_thread($thread_id)
+    {
         $pdo = dbconnect();
         $sql = 'SELECT COUNT(*) FROM thread_comments WHERE thread_id = ?';
         $ps = $pdo->prepare($sql);
@@ -158,6 +159,4 @@ class thread_main
 
         return $thread_count[0];
     }
-    
-
 }

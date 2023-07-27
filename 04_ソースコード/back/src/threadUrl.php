@@ -1,5 +1,5 @@
 <?php
-    require_once "../app/dao/threadDAO.php";
+    require_once "https://taketake0506.boo.jp/2023Dev3Early/back/app/dao/threadDAO.php";
     $dbm = new thread_main();
 
     try{
@@ -8,4 +8,3 @@
     }catch(Exception $e){
         echo "エラー";
     }
-?>

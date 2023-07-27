@@ -27,7 +27,7 @@
 
 <body>
     <div class="img">
-        <a href="http://localhost/2023Dev3Early/04_%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89/front/src/home.php">
+        <a href="https://taketake0506.boo.jp/2023Dev3Early//front/src/home.php">
             <img class="commingSoon" src="../assets/img/comming_soon.png">
         </a>
     </div>
