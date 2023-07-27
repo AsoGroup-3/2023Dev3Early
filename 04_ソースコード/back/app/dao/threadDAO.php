@@ -77,7 +77,7 @@ class thread_main
                 'thread_bytes' => $row['thread_bytes'],
                 'thread_create_date' => $row['thread_create_date'],
                 'created_date_time' => getDateDiff($currentDateTime, $row['thread_create_date']),
-                'thread_url' => 'https://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
+                'thread_url' => 'http://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
             ));
         }
         //arrayの中身をJSON形式に変換している
@@ -137,7 +137,7 @@ class thread_main
                 'thread_bytes' => $row['thread_bytes'],
                 'thread_create_date' => $row['thread_create_date'],
                 'created_date_time' => getDateDiff($currentDateTime, $row['thread_create_date']),
-                'thread_url' => 'https://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
+                'thread_url' => 'http://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php' . '?thread_id=' . $row['thread_id'],
                 'thread_count' => $this->count_thread($row['thread_id']),
             ));
         }

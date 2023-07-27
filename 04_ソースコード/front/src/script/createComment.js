@@ -9,7 +9,7 @@ const com_vm = new Vue({
       },
       methods: {
           createComment() {          
-            const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/commentCreate.php";
+            const url = "http://taketake0506.boo.jp/2023Dev3Early/back/src/commentCreate.php";
             const data = new FormData();
             data.append('user_name', this.user_name);
             data.append('comment_detail', this.comment_detail);
@@ -19,7 +19,7 @@ const com_vm = new Vue({
               .then(response => {
                 // レスポンスを処理するコード
                 console.log(response.data);
-                window.location.assign("https://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php?thread_id="+this.getQueryParam("thread_id")); 
+                window.location.assign("http://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php?thread_id="+this.getQueryParam("thread_id")); 
               })
               .catch(error => {
                 // エラーハンドリングのコード
@@ -28,7 +28,7 @@ const com_vm = new Vue({
           },
           //セッションから取得したユーザー名をテキストボックスにセットする
           setUserName(){
-            const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/getSession.php";
+            const url = "http://taketake0506.boo.jp/2023Dev3Early/back/src/getSession.php";
             const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
             axios
               .get(`${url}?timestamp=${timestamp}`)
