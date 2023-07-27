@@ -1,7 +1,7 @@
 <?php
 function dbconnect()
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=rordb;charset=utf8', 'webuser', 'abccsd2');
+    $pdo = new PDO('mysql:host=localhost;dbname=LAA1418145-rordb;charset=utf8', 'LAA1418145', 'teamror');
 
     return $pdo;
 }

@@ -9,7 +9,7 @@ const com_vm = new Vue({
       },
       methods: {
           createComment() {          
-            const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/commentCreate.php";
+            const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/commentCreate.php";
             const data = new FormData();
             data.append('user_name', this.user_name);
             data.append('comment_detail', this.comment_detail);
@@ -28,7 +28,7 @@ const com_vm = new Vue({
           },
           //セッションから取得したユーザー名をテキストボックスにセットする
           setUserName(){
-            const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/getSession.php";
+            const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/getSession.php";
             const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
             axios
               .get(`${url}?timestamp=${timestamp}`)

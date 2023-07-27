@@ -10,7 +10,7 @@ const result_vm = new Vue({
   },
   methods: {
     fetchSearchThreads(keyword) {
-      var url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/searchThreadUrl.php?keyword="+keyword;
+      var url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/searchThreadUrl.php?keyword="+keyword;
       const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
       axios
         .get(`${url}&timestamp=${timestamp}`)

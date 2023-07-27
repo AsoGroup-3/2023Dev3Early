@@ -17,7 +17,7 @@ ${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2, '0')}-${d.getDate()
 ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}
             `.replace(/\n|\r/g, '');
         
-          const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/ringCreate.php";
+          const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/ringCreate.php";
           const data = new FormData();
           data.append('ring_title', this.ring_title);
           data.append('ring_detail', this.ring_detail);

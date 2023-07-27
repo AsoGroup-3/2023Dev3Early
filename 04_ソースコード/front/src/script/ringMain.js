@@ -13,7 +13,7 @@ const vm = new Vue({
     methods: {
       //コメント取得
       fetchComments(thread_id) {
-        const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/ringCommentDisplay.php";
+        const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/ringCommentDisplay.php";
         const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
         axios
           .get(`${url}?thread_id=${thread_id}&timestamp=${timestamp}`)
@@ -26,7 +26,7 @@ const vm = new Vue({
       },
       //thread取得・今回は名前のみ使用
       fetchRing_name(thread_id) {
-        const url = "http://localhost/2023Dev3Early/04_ソースコード/back/src/getRingName.php";
+        const url = "https://taketake0506.boo.jp/2023Dev3Early/back/src/getRingName.php";
         const timestamp = new Date().getTime(); // 毎回違うアドレスで検索するためのタイムスタンプ
         axios
           .get(`${url}?thread_id=${thread_id}&timestamp=${timestamp}`)
