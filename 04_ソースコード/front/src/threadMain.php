@@ -71,6 +71,7 @@ require_once "../components/header.php";
     <!-- JSの読み込み -->
     <script src="./script/threadMain.js"></script>
     <script src="./script/createComment.js"></script>
+    <script src="./script/searchThread.js"></script>
 </body>
 
 </html>

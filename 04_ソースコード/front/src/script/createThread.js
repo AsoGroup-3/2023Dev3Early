@@ -14,7 +14,7 @@ ${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2, '0')}-${d.getDate()
 ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}
             `.replace(/\n|\r/g, '');
         
-          const url = "http://taketake0506.boo.jp/2023Dev3Early/back/src/threadCreate.php";
+          const url = "http://witty-kusu-4276.hippy.jp/2023Dev3Early/back/src/threadCreate.php";
           const data = new FormData();
           data.append('thread_title', this.thread_title);
           data.append('thread_detail', this.thread_detail);
@@ -24,7 +24,7 @@ ${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padSta
             .then(response => {
               // レスポンスを処理するコード
               console.log(response.data); 
-              window.location.assign("http://taketake0506.boo.jp/2023Dev3Early//front/src/threadMain.php?thread_id=" + response.data); 
+              window.location.assign("http://witty-kusu-4276.hippy.jp/2023Dev3Early//front/src/threadMain.php?thread_id=" + response.data); 
             })
             .catch(error => {
               // エラーハンドリングのコード

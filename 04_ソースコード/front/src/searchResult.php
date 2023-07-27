@@ -54,6 +54,7 @@ require "../components/header.php";
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JSの読み込み -->
     <script src="./script/searchThread.js"></script>
+    <script src="./script/searchThread.js"></script>
     <script src="./script/searchResult.js"></script>
 </body>
 

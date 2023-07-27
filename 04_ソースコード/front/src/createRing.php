@@ -55,6 +55,7 @@ require "../components/header.php";
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- JSの読み込み -->
     <script src="./script/createRing.js"></script>
+    <script src="./script/searchThread.js"></script>
 </body>
 
 </html>

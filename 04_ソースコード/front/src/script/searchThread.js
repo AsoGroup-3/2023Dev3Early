@@ -8,7 +8,7 @@ const search_vm = new Vue({
   },
   methods: {
     fetchSearchThreads() {
-      var url = "http://taketake0506.boo.jp/2023Dev3Early//front/src/searchResult.php?keyword="+this.keyword;
+      var url = "http://witty-kusu-4276.hippy.jp/2023Dev3Early//front/src/searchResult.php?keyword="+this.keyword;
       window.location.assign(url);
     },
   },
